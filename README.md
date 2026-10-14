@@ -59,7 +59,7 @@
 要求：Windows 10/11，Python 3.10+
 
 ```bash
-git clone <your-repo-url> windows-use-mcp
+git clone https://github.com/kultur-512/windows-use-mcp.git windows-use-mcp
 cd windows-use-mcp
 python -m venv .venv
 .venv\Scripts\pip install -r requirements.txt
