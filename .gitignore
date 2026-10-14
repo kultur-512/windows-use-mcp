@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# 本地测试产物
+screenshot_test.png

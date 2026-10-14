@@ -1,0 +1,4 @@
+windows-use>=0.8.1
+mcp>=2.0
+# windows-use 0.8.1 与 mistralai 3.x 不兼容（Mistral 类被移除），固定到 1.x
+mistralai>=1.9.11,<2
