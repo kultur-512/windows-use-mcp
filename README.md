@@ -1,15 +1,26 @@
 # Windows-Use MCP Server
 
-把 [windows-use](https://github.com/Jeomon/Windows-Use)（基于 **Windows UI Automation** 的桌面 GUI 自动化库）封装为 **MCP server**，作为 computer-use / 桌面自动化类工具的上位替代：
+[windows-use](https://github.com/Jeomon/Windows-Use) 的 MCP 封装 —— 把 Windows-Use Agent 的
+全部底层工具（以及可选的整包 Agent 模式）暴露给任意 MCP 客户端
+（ZCode / Claude Desktop / Cursor / Gemini CLI 等）。
 
-- 通过辅助功能树（UIA）读取屏幕内容，**不需要视觉模型**，比截图识别更快更准
+- 通过辅助功能树（UI Automation）读取屏幕内容，**不需要视觉模型**，比截图识别更快更准
 - 可以操作**后台窗口**（不抢焦点）
-- 纯工具集模式**不需要任何模型 API key** —— ZCode / Claude / Cursor 等客户端的模型直接驱动这些工具
+- **纯工具集模式（默认）不需要任何模型 API key** —— 客户端里的模型直接驱动这些工具
 
 > ⚠️ **安全警告**：本服务能操控整个桌面、运行 PowerShell、读写文件，可造成不可逆更改。
 > 建议在虚拟机 / Windows Sandbox 中部署，或仅在你信任的任务中使用。
 
----
+## 与上游 / 官方 MCP 的关系
+
+- [Jeomon/Windows-Use](https://github.com/Jeomon/Windows-Use)：上游项目，
+  一个自带 LLM 决策循环的 Windows GUI Agent。本项目把它**解包成纯工具集**，
+  这样工具由你自己的客户端模型直接驱动，不再内置一层 Agent。
+- [CursorTouch/Windows-MCP](https://github.com/CursorTouch/Windows-MCP)：同一作者（CursorTouch）
+  的官方 MCP server（9k+ stars），只有工具层。
+- **本项目的差异点**：默认提供 Windows-Use 风格的纯工具集（含 `wu_memory` 持久记忆、
+  `wu_file` 文件操作），并且可以开启 `wu_run_task` 整包 Agent 模式——
+  一个 server 同时拿到"工具层 + Agent 层"两种用法。
 
 ## 特性
 
@@ -162,4 +173,5 @@ python test_client2.py
 
 ## License
 
-MIT（本项目的 LICENSE 与上游 windows-use 同为 MIT，使用/分发时请保留上游版权声明）。
+MIT。上游 [windows-use](https://github.com/Jeomon/Windows-Use) 同为 MIT，
+使用/分发时请保留上游版权声明。
