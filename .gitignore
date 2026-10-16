@@ -7,3 +7,7 @@ venv/
 
 # 本地测试产物
 screenshot_test.png
+
+# 本地登录辅助脚本（勿提交）
+_gh_login_poll.py
+token.tmp
